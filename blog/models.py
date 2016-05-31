@@ -23,5 +23,3 @@ class Post(models.Model):
         post.delete()
         return HttpResponse('deleted')
 
-# class User(models.Model):
-#     auth = models.TextField()
