@@ -13,4 +13,10 @@
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaks }}</p>
     </div>
+    <div>
+      <form method="DELETE">{{ form.as_p }} <!-- display the form -->
+        {% csrf_token %} <!-- makes the forms secure -->
+        <button type="submit" class="save btn btn-default">Delete</button>
+      </form>
+    </div>
 {% endblock %}
