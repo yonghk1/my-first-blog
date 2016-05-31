@@ -18,8 +18,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def delete(request, id):
-        post = Post.objects.get(pk = id)
+    def delete(self):
+        post = Post.objects.get(pk = pk)
         post.delete()
         return HttpResponse('deleted')
 

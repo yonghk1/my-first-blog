@@ -16,9 +16,9 @@
 
 
 <div>
-  <form method="DELETE">{{ form.as_p }} <!-- display the form -->
+  <form method="POST">{{ form.as_p }} <!-- display the form -->
     {% csrf_token %} <!-- makes the forms secure -->
-    <button type="submit" class="save btn btn-default">Delete</button>
+    <button type="submit" class="save btn btn-default" value="Delete">Delete</button>
   </form>
   </div>
 {% endblock %}

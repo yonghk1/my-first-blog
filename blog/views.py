@@ -4,6 +4,7 @@ from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
+from django.http import HttpResponseRedirect, HttpResponse
 # Create your views here.
 
 def post_list(request):
@@ -12,7 +13,13 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post':post})
+    if request.method == "GET":
+        return render(request, 'blog/post_detail.html', {'post':post})
+    else:
+        posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        post = Post.objects.filter(pk = pk)
+        post.delete()
+        return HttpResponseRedirect('/')
 
 def post_new(request):
     if request.method == "POST":
