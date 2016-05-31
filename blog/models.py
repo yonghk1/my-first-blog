@@ -17,3 +17,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def delete(request, id):
+        post = Post.objects.get(pk = id)
+        post.delete()
+        return HttpResponse('deleted')
+
+# class User(models.Model):
+#     auth = models.TextField()
